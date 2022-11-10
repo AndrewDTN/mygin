@@ -4,5 +4,5 @@
 
 ## 命名
 >   pojo為定義物件的地方  
-service為定義服務的地方
+service為定義服務的地方  
 src為集中管理User功能的地方
