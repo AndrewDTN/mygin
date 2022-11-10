@@ -22,4 +22,3 @@ func FindByUserId(userId string)User{
 	database.DBconnecct.Where("id = ?",userId).First(&user)
 	return user
 }
-//test
