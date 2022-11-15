@@ -7,11 +7,39 @@
 [GIN-debug] GET    /v1/users/                --> GolangApi/service.FindAllUsers (5 handlers)
 [GIN-debug] GET    /v1/users/:id             --> GolangApi/service.FindByUserId (5 handlers)
 [GIN-debug] POST   /v1/users/                --> GolangApi/service.PostUser (5 handlers)
+[GIN-debug] POST   /v1/users/more            --> GolangApi/service.CreatUserList (5 handlers)
 [GIN-debug] DELETE /v1/users/:id             --> GolangApi/service.DeleteUser (5 handlers)
 [GIN-debug] PUT    /v1/users/:id             --> GolangApi/service.PutUser (5 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :8000
-[GIN] 2022/11/14 - 23:19:45 | 401 |            0s |             ::1 | GET      "/v1/users/"
-::1 - [2022-11-14 23:20:28.2879893 +0800 CST m=+54.855523301] GET /v1/users/ 200 
-[GIN] 2022/11/14 - 23:20:28 | 200 |      1.8141ms |             ::1 | GET      "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:45:21.9081974 +0800 CST m=+5.091976501] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:45:21 | 406 |     60.4139ms |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:45:36.9783155 +0800 CST m=+20.162094601] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:45:36 | 406 |      1.7458ms |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:47:19.8482665 +0800 CST m=+123.032045601] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:47:19 | 406 |      4.5845ms |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:47:48.8670833 +0800 CST m=+152.050862401] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:47:48 | 406 |      1.4656ms |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:48:01.7508436 +0800 CST m=+164.934622701] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:48:01 | 406 |      1.5633ms |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:48:13.3950756 +0800 CST m=+176.578854701] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:48:13 | 406 |       813.2µs |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:48:38.2397763 +0800 CST m=+201.423555401] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:48:38 | 406 |      1.2677ms |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:48:45.034709 +0800 CST m=+208.218488101] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:48:45 | 406 |      1.8553ms |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:48:57.0357567 +0800 CST m=+220.219535801] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:48:57 | 406 |      1.7712ms |             ::1 | POST     "/v1/users/"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 406
+::1 - [2022-11-15 23:49:19.1049344 +0800 CST m=+242.288713501] POST /v1/users/ 406 
+[GIN] 2022/11/15 - 23:49:19 | 406 |       1.031ms |             ::1 | POST     "/v1/users/"
