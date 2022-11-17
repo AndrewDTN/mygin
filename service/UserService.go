@@ -2,6 +2,7 @@ package service
 
 import(
 	"GolangApi/pojo"
+	"GolangApi/middlewares"
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -74,4 +75,51 @@ func CreatUserList(c *gin.Context){
 		return
 	}
 	c.JSON(http.StatusOK,users)
+}
+
+//LoginUser
+func LoginUser(c *gin.Context){
+	name:=c.PostForm("name")
+	password:=c.PostForm("password")
+	user:=pojo.CheckUserPassword(name,password)
+	if user.Id==0{
+		c.JSON(http.StatusNotFound,"Error No Login")
+		return
+	}
+	middlewares.SaveSession(c, user.Id)
+	c.JSON(http.StatusOK,gin.H{
+		"message":"Login Successfully",
+		"User":user,
+		"Sessions":middlewares.GetSession(c),
+	})
+}
+
+//LogoutUser
+func LogoutUser(c *gin.Context){
+	middlewares.ClearSession(c)
+	c.JSON(http.StatusOK,gin.H{
+		"message":"Loggout Successfully",
+	})
+}
+
+//CheckSession
+func CheckUserSession(c *gin.Context){
+	/*sessionId:=middlewares.GetSession(c)
+	if sessionId==0{
+		c.JSON(http.StatusUnauthorized,"Error No Session")
+		return
+	}
+	c.JSON(http.StatusOK,gin.H{
+		"message":"Check Session Successfully",
+		"User":middlewares.GetSession(c),
+	})*/
+	if middlewares.CheckSession(c){
+		c.JSON(http.StatusOK,gin.H{
+			"message":"Check Session Successfully",
+			"User":middlewares.GetSession(c),
+		})
+	}else{
+		c.JSON(http.StatusUnauthorized,"Error No Session")
+		return
+	}
 }

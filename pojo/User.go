@@ -2,7 +2,6 @@ package pojo
 
 import (
 	"GolangApi/database"
-	"log"
 )
 
 type User struct{
@@ -19,32 +18,35 @@ type Users struct{
 
 func FindAllUsers() []User{
 	var users []User
-	database.DBconnecct.Find(&users)
+	database.DBconnect.Find(&users)
 	return users
 }
 
 func FindByUserId(userId string)User{
 	var user User
-	database.DBconnecct.Where("id = ?",userId).First(&user)
+	database.DBconnect.Where("id = ?",userId).First(&user)
 	return user
 }
 
 func CreatUser(user User)User{
-	database.DBconnecct.Create(&user)
+	database.DBconnect.Create(&user)
 	return user
 }
 
 func DeleteUser(userId string) bool{
 	user:=User{}
-	result:=database.DBconnecct.Where("id=?",userId).Delete(&user)
-	log.Println(result)
-	if result.RowsAffected==0{
-		return false
-	}
-	return true
+	result:=database.DBconnect.Where("id = ?",userId).Delete(&user)
+	return result.RowsAffected > 0
 }
 
 func UpdateUser(userId string,user User) User{
-	database.DBconnecct.Model(&user).Where("id = ?",userId).Updates(user)
+	database.DBconnect.Model(&user).Where("id = ?",userId).Updates(user)
+	return user
+}
+
+//checkuserpassword
+func CheckUserPassword(name string,password string) User{
+	user:=User{}
+	database.DBconnect.Where("name = ? and password = ?",name,password).First(&user)
 	return user
 }
