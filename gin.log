@@ -4,8 +4,8 @@
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] GET    /v1/users/                --> GolangApi/service.FindAllUsers (6 handlers)
-[GIN-debug] GET    /v1/users/:id             --> GolangApi/service.FindByUserId (6 handlers)
+[GIN-debug] GET    /v1/users/:id             --> GolangApi/service.CachOneUserDecorator.func1 (6 handlers)
+[GIN-debug] GET    /v1/users/                --> GolangApi/service.CachUserAllDecorator.func1 (6 handlers)
 [GIN-debug] POST   /v1/users/                --> GolangApi/service.PostUser (6 handlers)
 [GIN-debug] POST   /v1/users/more            --> GolangApi/service.CreatUserList (6 handlers)
 [GIN-debug] PUT    /v1/users/:id             --> GolangApi/service.PutUser (6 handlers)
@@ -16,13 +16,31 @@
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :8000
-::1 - [2022-11-17 16:34:50.23081 +0800 CST m=+8.377400501] GET /v1/users/check 401 
-[GIN] 2022/11/17 - 16:34:50 | 401 |     50.0038ms |             ::1 | GET      "/v1/users/check"
-::1 - [2022-11-17 16:34:56.4748285 +0800 CST m=+14.621419001] POST /v1/users/login 200 
-[GIN] 2022/11/17 - 16:34:56 | 200 |      2.4771ms |             ::1 | POST     "/v1/users/login"
-::1 - [2022-11-17 16:34:59.056748 +0800 CST m=+17.203338501] GET /v1/users/check 200 
-[GIN] 2022/11/17 - 16:34:59 | 200 |       997.7µs |             ::1 | GET      "/v1/users/check"
-::1 - [2022-11-17 16:35:04.2259123 +0800 CST m=+22.372502801] GET /v1/users/logout 200 
-[GIN] 2022/11/17 - 16:35:04 | 200 |       995.8µs |             ::1 | GET      "/v1/users/logout"
-::1 - [2022-11-17 16:35:06.2862242 +0800 CST m=+24.432814701] GET /v1/users/check 401 
-[GIN] 2022/11/17 - 16:35:06 | 401 |       537.6µs |             ::1 | GET      "/v1/users/check"
+[GIN-debug] redirecting request 301: /v1/users/ --> /v1/users/
+::1 - [2022-11-21 23:14:38.1775977 +0800 CST m=+11.225557001] GET /v1/users/ 200 
+[GIN] 2022/11/21 - 23:14:38 | 200 |    396.4805ms |             ::1 | GET      "/v1/users/"
+[GIN-debug] redirecting request 301: /v1/users/ --> /v1/users/
+::1 - [2022-11-21 23:14:40.5712062 +0800 CST m=+13.619165501] GET /v1/users/ 200 
+[GIN] 2022/11/21 - 23:14:40 | 200 |      1.2978ms |             ::1 | GET      "/v1/users/"
+::1 - [2022-11-21 23:14:49.4864216 +0800 CST m=+22.534380901] GET /v1/users1 404 
+[GIN] 2022/11/21 - 23:14:49 | 404 |       155.5µs |             ::1 | GET      "/v1/users1"
+::1 - [2022-11-21 23:14:55.4093672 +0800 CST m=+28.457326501] GET /v1/users/1 200 
+[GIN] 2022/11/21 - 23:14:55 | 200 |      1.5482ms |             ::1 | GET      "/v1/users/1"
+::1 - [2022-11-21 23:14:57.1547306 +0800 CST m=+30.202689901] GET /v1/users/1 200 
+[GIN] 2022/11/21 - 23:14:57 | 200 |        84.6µs |             ::1 | GET      "/v1/users/1"
+::1 - [2022-11-21 23:15:09.1214424 +0800 CST m=+42.169401701] GET /v1/users/2 200 
+[GIN] 2022/11/21 - 23:15:09 | 200 |       899.5µs |             ::1 | GET      "/v1/users/2"
+::1 - [2022-11-21 23:15:10.5611453 +0800 CST m=+43.609104601] GET /v1/users/2 200 
+[GIN] 2022/11/21 - 23:15:10 | 200 |       982.4µs |             ::1 | GET      "/v1/users/2"
+::1 - [2022-11-21 23:15:23.1013974 +0800 CST m=+56.149356701] GET /v1/users/3 200 
+[GIN] 2022/11/21 - 23:15:23 | 200 |      1.9807ms |             ::1 | GET      "/v1/users/3"
+::1 - [2022-11-21 23:15:25.0027417 +0800 CST m=+58.050701001] GET /v1/users/3 200 
+[GIN] 2022/11/21 - 23:15:25 | 200 |            0s |             ::1 | GET      "/v1/users/3"
+::1 - [2022-11-21 23:15:33.3106742 +0800 CST m=+66.358633501] GET /v1/users/3 200 
+[GIN] 2022/11/21 - 23:15:33 | 200 |       995.5µs |             ::1 | GET      "/v1/users/3"
+[GIN-debug] redirecting request 301: /v1/users/ --> /v1/users/
+::1 - [2022-11-21 23:15:41.5338799 +0800 CST m=+74.581839201] GET /v1/users/ 200 
+[GIN] 2022/11/21 - 23:15:41 | 200 |       999.3µs |             ::1 | GET      "/v1/users/"
+[GIN-debug] redirecting request 301: /v1/users/ --> /v1/users/
+::1 - [2022-11-21 23:15:47.5484854 +0800 CST m=+80.596444701] GET /v1/users/ 200 
+[GIN] 2022/11/21 - 23:15:47 | 200 |       458.3µs |             ::1 | GET      "/v1/users/"

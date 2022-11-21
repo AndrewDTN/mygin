@@ -3,6 +3,7 @@ package service
 import(
 	"GolangApi/pojo"
 	"GolangApi/middlewares"
+	DB "GolangApi/database"
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -122,4 +123,22 @@ func CheckUserSession(c *gin.Context){
 		c.JSON(http.StatusUnauthorized,"Error No Session")
 		return
 	}
+}
+
+//Redis
+func RedisOneUser(c *gin.Context){
+	id:=c.Param("id")
+	if id=="0" {
+		c.JSON(http.StatusNotFound,"Error Not Found")
+		return
+	}
+	user:=pojo.User{}
+	DB.DBconnect.Find(&user,id)
+	c.Set("dbResult",user)
+}
+
+func RedisAllUser(c *gin.Context){
+	users:=[]pojo.User{}
+	DB.DBconnect.Find(&users)
+	c.Set("dbUserAll",users)
 }
